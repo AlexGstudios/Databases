@@ -1,0 +1,27 @@
+GUI
+
+* loggIn
+* check if its a user or admin
+
+* userGui = two buttons and a textfield
+- button1 = my books
+- button2 = burrow a book --(new gui)--
+        button1 = burrow book
+        textfield = available books
+- textfield = show current loaned books
+
+* adminGui = four buttons and a textfield
+- button1 = books left
+- button2 = books burrowed
+- button3 = magazines left
+- button4 = magazines burrowed
+- MAYBE!! button5 = add user --(new gui)--
+        textarea1 = name of burrower
+        textarea2 = address of burrower
+        !phone id is same as ID!
+        textarea3 = cardNum of burrower
+        button1 = save to table burrowers
+- MAYBE!! button5 = delete user --(new gui)--
+        textfield = list the users
+        button1 = delete user
+
