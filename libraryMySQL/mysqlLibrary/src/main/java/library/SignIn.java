@@ -3,65 +3,83 @@ package library;
 import java.sql.*;
 
 public class SignIn {
-       
-    Gui gui;
 
-    private String name;
-    private String pass;
-    private String check;
-    private Connection con;
+    private static Gui gui;
+
+    private static int userID;
+
+    private static String name;
+    private static String pass;
+
+    private static String[] check;
+
+    private static Connection con;
 
     public SignIn(){
 
         gui = new Gui();
+    }
 
-        this.name = "-1";
-        this.pass = "-1";
+    public static void getInput(String name, String pass){
 
-        while (!name.equals("q")) {
+        if (name.equals("quit")) {
             
-            if(name.equals("-1")){
+            System.exit(0);
+        }else{
 
-                this.name = gui.getUserName();
-                this.pass = gui.getUserPass();
-
-                if (!name.equals("-1")) {
-                    
-                    connection(name, pass);
-                }
-            }
-    
+            connection(name, pass);
         }
     }
 
-    private void connection(String conName, String conPass){
+    private static void connection(String conName, String conPass){
 
         try {
             
-            // Class.forName("com.mysql.jdbc.Driver");
-            con = DriverManager.getConnection("jdbc:mysql://localhost/library", "", "");
+            con = DriverManager.getConnection("jdbc:mysql://localhost/library", conName, conPass);
             PreparedStatement preSta = con.prepareStatement("select * from burrowers;");
             ResultSet rs = preSta.executeQuery();
 
-            while (rs.next()) {
-                check = check + "\n" + (rs.getString(2) + " " + rs.getString(3) + " " + rs.getString(4) + " " + rs.getString(5));
+            String users = "";
+
+            while (rs.next()) { 
+
+                users = users + "," + (rs.getString(2));
             }
-            System.out.println(check);
+
+            check = users.split(",");
+
+            if(ifUser(check, conName)){
+
+                System.out.println("User");
+                gui.isDispose();
+                User user = new User(conName, conPass, userID);
+            }else{
+
+                System.out.println("Admin");
+            }
+
+            con.close();
         } catch (Exception e) {
             System.out.println(e);
         }
-
-        setName();
-        setPass();
     }
 
-    public void setName(){
+    public static Boolean ifUser(String[] names, String userName){
 
-        this.name = "-1";
-    }
+        for (int i = 0; i < names.length; i++) {
+            
+            String[] fullName = names[i].split(" ");
 
-    public void setPass(){
+            String firstName = fullName[0];
 
-        this.pass = "-1";
+            userID = i;
+
+            if (userName.equals(firstName)) {
+                
+                return true;
+            }
+        }
+
+        return false;
     }
 }

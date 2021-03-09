@@ -4,17 +4,53 @@ import java.sql.*;
 
 public class User {
       
-    private UserGui gui;
-    private Connection userCon;
+    private static UserGui gui;
 
-    public User(String name, Connection con){
+    private static String userName;
+    private static String userPass;
+
+    private static int userID;
+
+    public User(String name, String pass, int ID){
 
         gui = new UserGui(name);
 
-        this.userCon = con;
+        userName = name;
+        userPass = pass;
+
+        userID = ID;
+
+        showBooks(name, pass);
     }
 
-    public void xxx(){
+    public static void borrowBook(){
+
+        BorrowBook bb = new BorrowBook(userName, userPass, userID);
+        gui.dispose();
+    }
+
+    public static void showBooks(String conName, String conPass){
         
+        try {
+            
+            Connection con = DriverManager.getConnection("jdbc:mysql://localhost/library", conName, conPass);
+            PreparedStatement presta = con.prepareStatement("select books.title, books.pages, books.classification from books join onloan on onloan.burrowerID = ? and onloan.bookID = books.ID;");
+            presta.setInt(1, userID);
+            ResultSet rs = presta.executeQuery();
+
+            String info = "";
+
+            while (rs.next()) {
+                
+                info = info + "\n" + (rs.getString(1) + " " + rs.getString(2) + " " + rs.getString(3));
+            }
+
+            gui.setTaMyBooks(info);
+
+        } catch (Exception e) {
+
+            System.out.println(e);
+        }
+
     }
 }

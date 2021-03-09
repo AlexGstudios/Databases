@@ -1,14 +1,14 @@
 GUI
 
-* loggIn
-* check if its a user or admin
+* loggIn --------
+* check if its a user or admin -----
 
-* userGui = two buttons and a textfield
+* userGui = two buttons and a textfield ---------
 - button1 = my books
 - button2 = burrow a book --(new gui)--
         button1 = burrow book
         textfield = available books
-- textfield = show current loaned books
+- textfield = show current loaned books ----------
 
 * adminGui = four buttons and a textfield
 - button1 = books left

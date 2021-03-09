@@ -7,52 +7,32 @@ import java.awt.event.ActionListener;
 public class Gui extends JFrame{
         
     private JPanel panel;
+
     private JLabel labelName;
     private JLabel labelPass;
-    private JTextArea textName;
-    private JTextArea textPass;
+
+    private JTextField textName;
+    private JTextField textPass;
+
     private JButton button;
+
     private String name;
     private String pass;
 
     public Gui(){
 
-        this.name = "-1";
-        this.pass = "-1";
-
         this.setTitle("Sql - Gui");
-        this.setSize(1250, 800);
-        this.setLocation(500, 250);
+        this.setSize(800, 500);
+        this.setLocation(650, 250);
         this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         
         setEle();
         setGui();
         
         this.add(panel);
+
         this.setVisible(true);
         this.setResizable(false);
-    }
-
-    public String getUserName(){
-
-        if (this.name.equals("-1")){ 
-            return "-1";
-        }
-
-        String toName = name;
-        name = "-1";
-        return toName;
-    }
-
-    public String getUserPass(){
-
-        if (this.pass.equals("-1")) {
-            return "-1";
-        }
-
-        String toPass = this.pass;
-        this.pass = "-1";
-        return toPass;
     }
 
     public void isDispose(){
@@ -74,9 +54,9 @@ public class Gui extends JFrame{
 
         this.panel = new JPanel(new GridLayout(3,3));
         this.labelName = new JLabel("Name: ");
-        this.textName = new JTextArea();
+        this.textName = new JTextField();
         this.labelPass = new JLabel("Password: ");
-        this.textPass = new JTextArea();
+        this.textPass = new JTextField();
         this.button = new JButton("Submit");
 
         ActionListener al = e -> {
@@ -84,6 +64,7 @@ public class Gui extends JFrame{
             this.name = textName.getText();
             this.pass = textPass.getText();
             // todo: close this window
+            SignIn.getInput(this.name, this.pass);
         };
 
         this.button.addActionListener(al);
