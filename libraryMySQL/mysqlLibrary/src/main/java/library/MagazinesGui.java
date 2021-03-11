@@ -1,14 +1,14 @@
 package library;
-
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyListener;
 
-public class BorrowGui extends JFrame {
+public class MagazinesGui extends JFrame {
     
     private JPanel panel;
 
-    private JList<String> avBooks;
+    private JList<String> avMagazines;
 
     private JLabel label;
 
@@ -25,7 +25,7 @@ public class BorrowGui extends JFrame {
 
     private String[] data;
 
-    public BorrowGui(String name, int ID, String[] ls){
+    public MagazinesGui(String name, int ID, String[] ls){
 
         this.data = ls;
         this.userID = ID;
@@ -46,7 +46,7 @@ public class BorrowGui extends JFrame {
 
     public void getBookID(){
 
-        listSelect = avBooks.getSelectedValue().toString();
+        listSelect = avMagazines.getSelectedValue().toString();
 
         String[] splitList = listSelect.split(" ");
 
@@ -60,6 +60,7 @@ public class BorrowGui extends JFrame {
     }
 
     public void updJList(DefaultListModel<String> model, int bookID, String listSelect){
+        // change bookid to magid---------x-x-x-x-x-x
 
         model.set(bookID, listSelect);
     }
@@ -67,31 +68,21 @@ public class BorrowGui extends JFrame {
     public void setEle(){
 
         DefaultListModel<String> model = new DefaultListModel<>();
-        
+
         for (String str : data) {
             
             model.addElement(str);
         }
 
-        this.panel = new JPanel(new GridLayout(3, 1));
-        this.label = new JLabel("Available books: ");
-        this.avBooks = new JList<String>(model);
-        this.btnAdd = new JButton("Borrow book");
+        this.panel = new JPanel(new GridLayout(2, 1));
+        this.avMagazines = new JList<String>(model);
         this.back = new JButton("Back");
         this.search = new JTextField();
         this.btnSearch = new JButton("Search");
 
-        ActionListener alAddBook = e -> {
-
-            getBookID();
-            BorrowBook.addBook(userID, bookID, listSelect, model);
-        };
-
-        this.btnAdd.addActionListener(alAddBook);
-
         ActionListener alBack = e -> {
 
-            BorrowBook.back();
+            Magazines.back();
         };
 
         this.back.addActionListener(alBack);
@@ -104,17 +95,15 @@ public class BorrowGui extends JFrame {
 
         this.btnSearch.addActionListener(alSearch);
 
-        this.avBooks.setLayoutOrientation(JList.VERTICAL);
-        this.avBooks.setVisibleRowCount(-1);
+        this.avMagazines.setLayoutOrientation(JList.VERTICAL);
+        this.avMagazines.setVisibleRowCount(-1);
     }
 
     public void setGui(){
 
-        this.panel.add(label);
-        this.panel.add(new JScrollPane(avBooks));
         this.panel.add(search);
         this.panel.add(btnSearch);
-        this.panel.add(btnAdd);
+        this.panel.add(new JScrollPane(avMagazines));
         this.panel.add(back);
     }
 }

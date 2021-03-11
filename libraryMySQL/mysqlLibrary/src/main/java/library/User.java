@@ -29,6 +29,18 @@ public class User {
         gui.dispose();
     }
 
+    public static void magazines(){
+
+        Magazines mag = new Magazines(userName, userPass, userID);
+        gui.dispose();
+    }
+
+    public static void signOut(){
+
+        SignIn si = new SignIn();
+        gui.dispose();
+    }
+
     public static void showBooks(String conName, String conPass){
         
         try {

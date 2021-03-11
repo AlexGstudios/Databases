@@ -8,7 +8,7 @@ public class UserGui extends JFrame {
     
     private JPanel panel;
 
-    private JButton btnMyBooks;
+    private JButton btnMagazines;
     private JButton btnAddBook;
     private JButton btnSignOut;
     
@@ -42,17 +42,17 @@ public class UserGui extends JFrame {
     public void setEle(){
 
         this.panel = new JPanel(new GridLayout(2, 2));
-        this.btnMyBooks = new JButton("My Books");
+        this.btnMagazines = new JButton("Magazines");
         this.btnAddBook = new JButton("Borrow a book");
         this.btnSignOut = new JButton("Sign Out");
         this.taMyBooks = new JTextArea();
 
-        ActionListener alMyBooks = e -> {
+        ActionListener alMagazines = e -> {
 
-            // todo: update users list with setTfMyBooks() from the database "select * from borrowed;" maybe not needed
+            User.magazines();
         };
 
-        this.btnMyBooks.addActionListener(alMyBooks);
+        this.btnMagazines.addActionListener(alMagazines);
 
         ActionListener alAddBook = e -> {
 
@@ -63,8 +63,10 @@ public class UserGui extends JFrame {
 
         ActionListener alSignOut = e ->{
 
-            SignIn si = new SignIn();
-            dispose();
+            User.signOut();
+
+            // SignIn si = new SignIn();
+            // dispose();
         };
 
         this.btnSignOut.addActionListener(alSignOut);
@@ -72,7 +74,7 @@ public class UserGui extends JFrame {
 
     public void setGui(){
 
-        this.panel.add(btnMyBooks);
+        this.panel.add(btnMagazines);
         this.panel.add(btnAddBook);
         this.panel.add(taMyBooks);
         this.panel.add(btnSignOut);

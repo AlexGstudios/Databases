@@ -114,17 +114,34 @@ public class BorrowBook {
         return isTrue;
     }
 
-    public static void search(String input){
+    public static void search(String input, DefaultListModel<String> model, String[] data){
 
-        Pattern p = Pattern.compile("[A-Za-z]([a-z]{1,30})");
+        model.clear();
 
-        Matcher m = p.matcher(input);
+        Pattern p = Pattern.compile("(?i)" + input);
 
-        while (m.find()) {
+        int count = 1;
+
+        while (count != data.length) {
             
-            
+            Matcher m = p.matcher(data[count]);
+
+            while (m.find()) {
+                
+                if (m.group().length() != 0) {
+                    
+                    model.addElement(data[count]);
+                }
+            }
+            count++;
         }
-
+        if (input.equals("")) {
+            
+            for (String str : data) {
+                
+                model.addElement(str);
+            }
+        }
     }
 
     public static void addBook(int userID, int bookID, String listSelect, DefaultListModel<String> model){

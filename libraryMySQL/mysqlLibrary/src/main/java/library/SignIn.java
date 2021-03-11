@@ -50,12 +50,12 @@ public class SignIn {
 
             if(ifUser(check, conName)){
 
-                System.out.println("User");
                 gui.isDispose();
                 User user = new User(conName, conPass, userID);
             }else{
 
-                System.out.println("Admin");
+                Admin ad = new Admin(conName, conPass);
+                gui.dispose();
             }
 
             con.close();
