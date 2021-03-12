@@ -43,7 +43,7 @@ public class AdminGui extends JFrame {
 
         ActionListener alEdit = e -> {
 
-            Admin.employees(adminName);
+            Admin.employees(adminName, adminPass);
         };
 
         this.btnEmployees.addActionListener(alEdit);

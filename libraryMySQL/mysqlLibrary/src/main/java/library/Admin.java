@@ -15,9 +15,9 @@ public class Admin {
         aGui = new AdminGui(adminName, adminPass);
     }
 
-    public static void employees(String name){
+    public static void employees(String name, String pass){
 
-        EditEmployees ee = new EditEmployees(name);
+        EditEmployees ee = new EditEmployees(name, pass);
         aGui.dispose();
     }
 
