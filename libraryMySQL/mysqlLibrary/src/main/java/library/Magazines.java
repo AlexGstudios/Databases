@@ -24,6 +24,10 @@ public class Magazines {
 
     public static String[] conData(String name, String pass){
 
+        // gets the magazines from the database and displays them
+        // in a list
+        // is ready to add borrow magazines
+
         String[] magID;
         String[] magInfo;
         String toMagID = "";
@@ -68,6 +72,8 @@ public class Magazines {
 
     public static Boolean checkMag(String magID, String name, String pass){
 
+        // checks if magazines is borrowed
+
         String[] allMags;
         String onloanMagID = "x";
 
@@ -108,6 +114,8 @@ public class Magazines {
     }
 
     public static void back(){
+
+        // closes the current gui and starts the user gui
 
         User user = new User(userName, userPass, userID);
         mGui.dispose();

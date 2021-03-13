@@ -14,6 +14,8 @@ public class OnloanGui extends JFrame{
     
     public OnloanGui(String[] ls){
 
+        // sets the onloan gui
+
         this.data = ls;
 
         this.setTitle("On Loan");
@@ -34,6 +36,8 @@ public class OnloanGui extends JFrame{
 
         DefaultListModel<String> model = new DefaultListModel<String>();
 
+        // sets the list with data
+
         for (String str : data) {
             
             model.addElement(str);
@@ -42,6 +46,8 @@ public class OnloanGui extends JFrame{
         this.panel = new JPanel(new GridLayout(2, 2));
         this.list = new JList<String>(model);
         this.back = new JButton("Back");
+
+        // button to go back to privious gui
 
         ActionListener alBack = e -> {
 

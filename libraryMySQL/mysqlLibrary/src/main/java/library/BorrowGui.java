@@ -27,6 +27,8 @@ public class BorrowGui extends JFrame {
 
     public BorrowGui(String name, int ID, String[] ls){
 
+        // sets up gui for borrowing books
+
         this.data = ls;
         this.userID = ID;
 
@@ -46,6 +48,9 @@ public class BorrowGui extends JFrame {
 
     public void getBookID(){
 
+        // gets the ID from the string data in the list
+        // that is selected in the current gui
+
         listSelect = avBooks.getSelectedValue().toString();
 
         String[] splitList = listSelect.split(" ");
@@ -61,6 +66,8 @@ public class BorrowGui extends JFrame {
 
     public void updJList(DefaultListModel<String> model, int bookID, String listSelect){
 
+        // updates the list selected
+
         model.set(bookID, listSelect);
     }
 
@@ -68,6 +75,8 @@ public class BorrowGui extends JFrame {
 
         DefaultListModel<String> model = new DefaultListModel<>();
         
+        // adds the data to the list
+
         for (String str : data) {
             
             model.addElement(str);
@@ -81,6 +90,8 @@ public class BorrowGui extends JFrame {
         this.search = new JTextField();
         this.btnSearch = new JButton("Search");
 
+        // button to add selected book
+
         ActionListener alAddBook = e -> {
 
             getBookID();
@@ -89,12 +100,16 @@ public class BorrowGui extends JFrame {
 
         this.btnAdd.addActionListener(alAddBook);
 
+        // button to go back to the previous page
+
         ActionListener alBack = e -> {
 
             BorrowBook.back();
         };
 
         this.back.addActionListener(alBack);
+
+        // button to search for the user input
 
         ActionListener alSearch = e -> {
 

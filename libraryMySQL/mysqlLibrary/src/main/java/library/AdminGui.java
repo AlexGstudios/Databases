@@ -17,6 +17,8 @@ public class AdminGui extends JFrame {
     
     public AdminGui(String name, String pass){
 
+        // sets up the admin gui
+
         this.adminName = name;
         this.adminPass = pass;
 
@@ -41,6 +43,8 @@ public class AdminGui extends JFrame {
         this.btnOnloan = new JButton("On loan");
         this.signOut = new JButton("Sign Out");
 
+        // button to go to the edit employees gui
+
         ActionListener alEdit = e -> {
 
             Admin.employees(adminName, adminPass);
@@ -48,12 +52,16 @@ public class AdminGui extends JFrame {
 
         this.btnEmployees.addActionListener(alEdit);
 
+        // button to go to the onloan gui
+
         ActionListener alOnloan = e -> {
 
             Admin.onLoan(adminName, adminPass);
         };
 
         this.btnOnloan.addActionListener(alOnloan);
+
+        // button to sign out
 
         ActionListener alSignOut = e -> {
 

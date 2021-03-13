@@ -18,6 +18,10 @@ public class UserGui extends JFrame {
 
     public UserGui(String name){
 
+        // sets up gui for user, displays loaned books
+        // button to see magazines and a button 
+        // to borrow new books
+
         this.setTitle(name + " My Books");
         this.setSize(800, 500);
         this.setLocation(650, 250);
@@ -36,6 +40,8 @@ public class UserGui extends JFrame {
 
     public void setTaMyBooks(String books){
 
+        // displays current borrowed books
+
         this.taMyBooks.setText(books);
     }
 
@@ -47,6 +53,8 @@ public class UserGui extends JFrame {
         this.btnSignOut = new JButton("Sign Out");
         this.taMyBooks = new JTextArea();
 
+        // button for magazines
+
         ActionListener alMagazines = e -> {
 
             User.magazines();
@@ -54,12 +62,16 @@ public class UserGui extends JFrame {
 
         this.btnMagazines.addActionListener(alMagazines);
 
+        // button to borrow books
+
         ActionListener alAddBook = e -> {
 
             User.borrowBook();
         };
 
         this.btnAddBook.addActionListener(alAddBook);
+
+        // button to sign out
 
         ActionListener alSignOut = e ->{
 

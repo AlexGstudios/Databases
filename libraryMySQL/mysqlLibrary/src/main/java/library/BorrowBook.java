@@ -31,6 +31,8 @@ public class BorrowBook {
 
     public static String[] conData(String conName, String conPass){
 
+        // gets the data from the database
+
         String[] bookID;
         String[] bookInfo;
         String toBookID = "";
@@ -75,6 +77,9 @@ public class BorrowBook {
 
     public static Boolean checkBooks(String checkBookID, String conName, String conPass){
 
+        // checks if books are borrowed or not
+        // true if the book is borrowed by a user and false if it can be borrowed
+
         String[] allBooks;
         String onloanBookID = "x";
 
@@ -116,6 +121,8 @@ public class BorrowBook {
 
     public static void search(String input, DefaultListModel<String> model, String[] data){
 
+        // goes through the list data to match users search input
+
         model.clear();
 
         Pattern p = Pattern.compile("(?i)" + input);
@@ -146,6 +153,8 @@ public class BorrowBook {
 
     public static void addBook(int userID, int bookID, String listSelect, DefaultListModel<String> model){
 
+        // adds the selected book to the user
+
         try {
             
             String ID = String.valueOf(bookID);
@@ -172,6 +181,8 @@ public class BorrowBook {
     }
 
     public static void back(){
+
+        // exits current gui and goes back to previous gui
 
         User us = new User(userName, userPass, userID);
         bGui.dispose();

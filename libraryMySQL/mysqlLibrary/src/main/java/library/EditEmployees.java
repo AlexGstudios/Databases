@@ -32,6 +32,9 @@ public class EditEmployees {
 
     public static String[] conData(String conName, String conPass){
 
+        // gets the data from the database
+        // adds it to arrays
+
         String[] emplInfo = new String[getLength(conName, conPass)];
         String toNames = "names - ";
         String toAddress = "addresses - ";
@@ -82,6 +85,9 @@ public class EditEmployees {
 
     public static int getLength(String conName, String conPass){
 
+        // gets the tables length and sets it an int
+        // used to initialize the String[] emplInfo
+
         int i = 0;
 
         try {
@@ -105,6 +111,8 @@ public class EditEmployees {
     }
 
     public static void updateEmployee(int ID, String name, String address, String salary, String daysOff, String phone, String phone2, String phone3, DefaultListModel<String> model){
+
+        // update query to update the selected employee
 
         try {
 
@@ -133,6 +141,8 @@ public class EditEmployees {
         }
     }
  
+    // setGuixxxxxx sets the datatype to be displayed in corresponding textarea
+
     public static String setGuiName(int i){
 
         return toArrNames[i];
@@ -169,6 +179,8 @@ public class EditEmployees {
     }
 
     public static void back(){
+
+        // goes back to the previous gui
 
         Admin ad = new Admin(adminName, adminPass);
         eGui.dispose();

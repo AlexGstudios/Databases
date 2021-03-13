@@ -21,6 +21,8 @@ public class Gui extends JFrame{
 
     public Gui(){
 
+        // Logg in screen
+
         this.setTitle("Sql - Gui");
         this.setSize(800, 500);
         this.setLocation(650, 250);
@@ -60,6 +62,9 @@ public class Gui extends JFrame{
         this.button = new JButton("Submit");
 
         ActionListener al = e -> {
+
+            // Takes the imputs from the In logg screen
+            // starts the auth check
 
             this.name = textName.getText();
             this.pass = textPass.getText();
