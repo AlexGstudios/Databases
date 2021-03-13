@@ -32,6 +32,8 @@ public class EditEmployeesGui extends JFrame{
     
     public EditEmployeesGui(String name, String pass, String[] ls){
 
+        // sets up the edit employees gui
+
         this.adminName = name;
         this.adminPass = pass;
 
@@ -53,12 +55,16 @@ public class EditEmployeesGui extends JFrame{
 
     public void updJList(DefaultListModel<String> model, int index, String element){
 
+        // updates the selected list item
+
         model.set(index, element);
     }
 
     public void setEle(){
 
         DefaultListModel<String> model = new DefaultListModel<String>();
+
+        // adds the database data to the list
 
         for (String str : data) {
             
@@ -77,6 +83,8 @@ public class EditEmployeesGui extends JFrame{
         this.btnUpdate = new JButton("Update");
         this.btnBack = new JButton("Back");
 
+        // clickevent to populate the textarea's with data
+
         MouseListener mlClick = new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent me){
@@ -93,12 +101,16 @@ public class EditEmployeesGui extends JFrame{
 
         this.list.addMouseListener(mlClick);
 
+        // button to update the employee data
+
         ActionListener alUpdate = e -> {
 
             EditEmployees.updateEmployee(list.getSelectedIndex(), name.getText(), address.getText(), salary.getText(), daysOff.getText(), phone.getText(), phone2.getText(), phone3.getText(), model);
         };
 
         this.btnUpdate.addActionListener(alUpdate);
+
+        // button to go back to previous gui
 
         ActionListener alBack = e -> {
 

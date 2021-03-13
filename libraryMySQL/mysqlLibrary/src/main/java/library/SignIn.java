@@ -22,6 +22,8 @@ public class SignIn {
 
     public static void getInput(String name, String pass){
 
+        // Gets the input and starts the logg in
+
         if (name.equals("quit")) {
             
             System.exit(0);
@@ -32,6 +34,8 @@ public class SignIn {
     }
 
     private static void connection(String conName, String conPass){
+
+        // checks to get a connection to the database
 
         try {
             
@@ -66,6 +70,8 @@ public class SignIn {
 
     public static Boolean ifUser(String[] names, String userName){
 
+        // checks if the user is a borrower or an admin
+        
         for (int i = 0; i < names.length; i++) {
             
             String[] fullName = names[i].split(" ");

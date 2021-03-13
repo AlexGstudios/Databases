@@ -22,6 +22,8 @@ public class Onloan {
     }
     public static String[] conData(String conName, String conPass){
 
+        // gets the data from the database
+
         String[] bookID;
         String[] bookInfo;
         String toBookID = "";
@@ -66,6 +68,9 @@ public class Onloan {
 
     public static Boolean checkBooks(String checkBookID, String conName, String conPass){
 
+        // checks if a user has borrowed a book
+        // returns true if the book is borrowed
+
         String[] allBooks;
         String onloanBookID = "x";
 
@@ -105,64 +110,9 @@ public class Onloan {
         return isTrue;
     }
 
-    // public static void search(String input, DefaultListModel<String> model, String[] data){
-
-    //     model.clear();
-
-    //     Pattern p = Pattern.compile("(?i)" + input);
-
-    //     int count = 1;
-
-    //     while (count != data.length) {
-            
-    //         Matcher m = p.matcher(data[count]);
-
-    //         while (m.find()) {
-                
-    //             if (m.group().length() != 0) {
-                    
-    //                 model.addElement(data[count]);
-    //             }
-    //         }
-    //         count++;
-    //     }
-    //     if (input.equals("")) {
-            
-    //         for (String str : data) {
-                
-    //             model.addElement(str);
-    //         }
-    //     }
-    // }
-
-    // public static void addBook(int userID, int bookID, String listSelect, DefaultListModel<String> model){
-
-    //     try {
-            
-    //         String ID = String.valueOf(bookID);
-
-    //         if (checkBooks(ID, userName, userPass)) {
-                
-    //             listSelect = listSelect + " - Does not exits";
-    //             bGui.updJList(model, bookID, listSelect);
-    //         }else{
-
-    //             Connection con = DriverManager.getConnection("jdbc:mysql://localhost/library", userName, userPass);
-    //             PreparedStatement preSta = con.prepareStatement("insert into onloan(burrowerID, bookID) values (?, ?);");
-    //             preSta.setInt(1, userID);
-    //             preSta.setInt(2, bookID);
-    //             preSta.executeUpdate();
-
-    //             listSelect = listSelect + " - Not in stock";
-    //             bGui.updJList(model, bookID, listSelect);
-    //         }
-    //     } catch (Exception e) {
-
-    //         System.out.println(e);
-    //     }
-    // }
-
     public static void back(){
+
+        // gets back to the previous gui
 
         Admin us = new Admin(adminName, adminPass);
         oGui.dispose();

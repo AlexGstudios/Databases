@@ -25,11 +25,15 @@ public class User {
 
     public static void borrowBook(){
 
+        // method for borrowing books button and closes the current gui
+
         BorrowBook bb = new BorrowBook(userName, userPass, userID);
         gui.dispose();
     }
 
     public static void magazines(){
+
+        // method for magazine button and closes the current gui
 
         Magazines mag = new Magazines(userName, userPass, userID);
         gui.dispose();
@@ -37,12 +41,16 @@ public class User {
 
     public static void signOut(){
 
+        // method for sign out button and closes the current gui
+
         SignIn si = new SignIn();
         gui.dispose();
     }
 
     public static void showBooks(String conName, String conPass){
         
+        // gets the borrowed books for the user
+
         try {
             
             Connection con = DriverManager.getConnection("jdbc:mysql://localhost/library", conName, conPass);
@@ -56,6 +64,8 @@ public class User {
                 
                 info = info + "\n" + (rs.getString(1) + " " + rs.getString(2) + " " + rs.getString(3));
             }
+
+            // method to display users book/books
 
             gui.setTaMyBooks(info);
 

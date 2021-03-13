@@ -2,7 +2,6 @@ package library;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionListener;
-import java.awt.event.KeyListener;
 
 public class MagazinesGui extends JFrame {
     
@@ -27,6 +26,8 @@ public class MagazinesGui extends JFrame {
 
     public MagazinesGui(String name, int ID, String[] ls){
 
+        // sets up the magazine gui
+
         this.data = ls;
         this.userID = ID;
 
@@ -44,30 +45,11 @@ public class MagazinesGui extends JFrame {
         this.setResizable(false);
     }
 
-    public void getBookID(){
-
-        listSelect = avMagazines.getSelectedValue().toString();
-
-        String[] splitList = listSelect.split(" ");
-
-        try {
-            
-            bookID = Integer.parseInt(splitList[0]);
-        } catch (Exception e) {
-
-            System.out.println(e);
-        }
-    }
-
-    public void updJList(DefaultListModel<String> model, int bookID, String listSelect){
-        // change bookid to magid---------x-x-x-x-x-x
-
-        model.set(bookID, listSelect);
-    }
-
     public void setEle(){
 
         DefaultListModel<String> model = new DefaultListModel<>();
+
+        // adds the data to the JList
 
         for (String str : data) {
             
@@ -80,12 +62,16 @@ public class MagazinesGui extends JFrame {
         this.search = new JTextField();
         this.btnSearch = new JButton("Search");
 
+        // button to go back to previous gui
+
         ActionListener alBack = e -> {
 
             Magazines.back();
         };
 
         this.back.addActionListener(alBack);
+
+        // button for search
 
         ActionListener alSearch = e -> {
 
